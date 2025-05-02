@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hece Oyunu</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #e0f7fa;
+      padding: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin: 1rem;
+    }
+    .image {
+      width: 150px;
+      height: auto;
+    }
+    .word {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .syllables {
+      font-size: 1.8rem;
+      color: #00796b;
+      margin-top: 1rem;
+      border: 2px dashed #80cbc4;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Red_car_cartoon.svg" alt="Araba" class="image">
+    <div class="word" onclick="showSyllables('AR-A-BA', this)">ARABA</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Apple_icon.svg" alt="Elma" class="image">
+    <div class="word" onclick="showSyllables('EL-MA', this)">ELMA</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Cat_cartoon_01.svg" alt="Kedi" class="image">
+    <div class="word" onclick="showSyllables('KE-Dİ', this)">KEDİ</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Fish_cartoon_icon.svg" alt="Balık" class="image">
+    <div class="word" onclick="showSyllables('BA-LIK', this)">BALIK</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Phone_icon_cartoon.svg" alt="Telefon" class="image">
+    <div class="word" onclick="showSyllables('TE-LE-FON', this)">TELEFON</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Lemon_cartoon.svg" alt="Limon" class="image">
+    <div class="word" onclick="showSyllables('Lİ-MON', this)">LİMON</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Tree_cartoon_icon.svg" alt="Ağaç" class="image">
+    <div class="word" onclick="showSyllables('A-ĞAÇ', this)">AĞAÇ</div>
+    <div class="syllables"></div>
+  </div>
+
+  <div class="card">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Airplane_cartoon.svg" alt="Uçak" class="image">
+    <div class="word" onclick="showSyllables('U-ÇAK', this)">UÇAK</div>
+    <div class="syllables"></div>
+  </div>
+
+  <script>
+    function showSyllables(syllables, element) {
+      const syllableBox = element.nextElementSibling;
+      syllableBox.innerText = syllables;
+      syllableBox.style.display = 'inline-block';
+
+      const utterance = new SpeechSynthesisUtterance(syllables.replace(/-/g, ' '));
+      utterance.lang = 'tr-TR';
+      speechSynthesis.speak(utterance);
+    }
+  </script>
+
+</body>
+</html>
